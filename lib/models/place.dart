@@ -6,14 +6,14 @@ class Place {
   final String title;
   final PlaceLocation? location;
   final File image;
-  final DateTime creationDate; // Novo atributo
+  final DateTime creationDate;
 
   Place({
     required this.id,
     required this.title,
     this.location,
     required this.image,
-    required this.creationDate, // Incluído no construtor
+    required this.creationDate,
   });
 
   Map<String, dynamic> toJson() {
@@ -22,7 +22,7 @@ class Place {
       'title': title,
       'location': location?.toJson(),
       'image': image.path,
-      'creationDate': creationDate.toIso8601String(), // Incluído no JSON
+      'creationDate': creationDate.toIso8601String(),
     };
   }
 

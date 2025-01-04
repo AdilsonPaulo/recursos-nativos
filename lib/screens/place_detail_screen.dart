@@ -93,7 +93,7 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
   void _editDetails() {
     showModalBottomSheet(
       context: context,
-      isScrollControlled: true, // Permite que o modal ocupe mais espaço
+      isScrollControlled: true,
       builder: (ctx) {
         return Padding(
           padding: EdgeInsets.only(
@@ -101,7 +101,7 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
             right: 16.0,
             top: 16.0,
             bottom:
-                MediaQuery.of(context).viewInsets.bottom, // Adapta ao teclado
+                MediaQuery.of(context).viewInsets.bottom,
           ),
           child: SingleChildScrollView(
             child: Column(

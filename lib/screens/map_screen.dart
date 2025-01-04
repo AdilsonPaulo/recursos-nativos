@@ -26,9 +26,8 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   LatLng? _pickedPosition;
-  final TextEditingController _searchController = TextEditingController(); // Controlador do campo de pesquisa
+  final TextEditingController _searchController = TextEditingController();
 
-  // Controlador do Google Maps
   late GoogleMapController _mapController;
 
   void _selectPosition(LatLng position) {
@@ -37,13 +36,11 @@ class _MapScreenState extends State<MapScreen> {
     });
   }
 
-  // Método para pesquisar o endereço
   Future<void> _searchAddress() async {
     String address = _searchController.text;
     if (address.isEmpty) return;
 
     try {
-      // Usando geocoding para obter a localização a partir do endereço
       List<Location> locations = await locationFromAddress(address);
 
       if (locations.isNotEmpty) {
@@ -51,13 +48,11 @@ class _MapScreenState extends State<MapScreen> {
           _pickedPosition = LatLng(locations[0].latitude, locations[0].longitude);
         });
 
-        // Movendo a câmera para a nova posição
         _mapController.animateCamera(
           CameraUpdate.newLatLng(_pickedPosition!),
         );
       }
     } catch (e) {
-      // Se ocorrer erro, exibe uma mensagem
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Endereço não encontrado")));
     }
   }
@@ -91,7 +86,7 @@ class _MapScreenState extends State<MapScreen> {
                 border: const OutlineInputBorder(),
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.search),
-                  onPressed: _searchAddress, // Ao pressionar o botão de pesquisa
+                  onPressed: _searchAddress,
                 ),
               ),
             ),
